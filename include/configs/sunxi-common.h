@@ -76,6 +76,16 @@
 #define CONFIG_INITRD_TAG
 #define CONFIG_CMDLINE_EDITING
 
+/* mmc config */
+#define CONFIG_MMC
+#define CONFIG_GENERIC_MMC
+#define CONFIG_CMD_MMC
+#define CONFIG_MMC_SUNXI
+#define CONFIG_MMC_SUNXI_SLOT		0		/* which mmc slot to use, could be 0,1,2,3 */
+#define CONFIG_MMC_SUNXI_USE_DMA
+#define CONFIG_ENV_IS_IN_MMC
+#define CONFIG_SYS_MMC_ENV_DEV		CONFIG_MMC_SUNXI_SLOT		/* env in which mmc */
+
 /*
  * Size of malloc() pool
  * 1MB = 0x100000, 0x100000 = 1024 * 1024
@@ -122,9 +132,7 @@
 #define CONFIG_SYS_MONITOR_LEN		(256 << 10)	/* 256 KB */
 #define CONFIG_IDENT_STRING		" Allwinner Technology "
 
-#define CONFIG_ENV_IS_NOWHERE	/* No storage defined yet */
-
-#define CONFIG_ENV_OFFSET		(544 << 10)	/* (8 + 24 + 512)KB */
+#define CONFIG_ENV_OFFSET		(544 << 10) /* (8 + 24 + 512)KB */
 #define CONFIG_ENV_SIZE			(128 << 10)	/* 128KB */
 
 #define CONFIG_BOOTCOMMAND \
