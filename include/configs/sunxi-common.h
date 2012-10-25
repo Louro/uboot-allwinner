@@ -189,4 +189,12 @@
 #undef CONFIG_CMD_NET
 #undef CONFIG_CMD_NFS
 
+/* I2C */
+#define CONFIG_SPL_I2C_SUPPORT
+#define CONFIG_SYS_I2C_SPEED		400000
+#define CONFIG_HARD_I2C
+#define CONFIG_SUNXI_I2C
+#define CONFIG_SYS_I2C_SLAVE		0x7f
+#define CONFIG_CMD_I2C
+
 #endif /* __CONFIG_H */

@@ -41,3 +41,17 @@ int clock_init(void)
 
 	return 0;
 }
+
+int clock_twi_onoff(int port, int state)
+{
+	struct sunxi_ccm_reg *const ccm =
+		(struct sunxi_ccm_reg *)SUNXI_CCM_BASE;
+
+	if (port > 2)
+		return -1;
+
+	/* set the apb1 clock gate for twi */
+	sr32(&ccm->apb1_gate, 0 + port, 1, state);
+
+	return 0;
+}
