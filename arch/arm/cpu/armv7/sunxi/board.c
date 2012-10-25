@@ -58,6 +58,9 @@ int gpio_init(void)
 /* do some early init */
 void s_init(void)
 {
+#ifdef CONFIG_WATCHDOG
+	watchdog_init();
+#endif
 	clock_init();
 	gpio_init();
 }

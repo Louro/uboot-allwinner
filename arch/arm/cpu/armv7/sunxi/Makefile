@@ -32,6 +32,7 @@ COBJS	+= dram.o
 COBJS	+= board.o
 COBJS	+= clock.o
 COBJS	+= gpio.o
+COBJS   += watchdog.o
 
 SRCS	:= $(SOBJS:.o=.S) $(COBJS:.o=.c)
 OBJS	:= $(addprefix $(obj),$(COBJS) $(COBJS-y) $(SOBJS))
