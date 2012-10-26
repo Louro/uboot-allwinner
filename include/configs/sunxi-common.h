@@ -40,7 +40,7 @@
 /*
  * Display CPU and Board information
  */
-#define CONFIG_DISPLAY_BOARDINFO
+#define CONFIG_SPL_DISPLAY_PRINT
 
 /* Clock Defines */
 
@@ -185,6 +185,38 @@
 #define CONFIG_CMD_EXT4		/* with this we can access ext4 bootfs */
 #define CONFIG_CMD_ZFS		/* with this we can access ZFS bootfs */
 
+/* test-only: remove unused code/defines */
+#if 0	/* Set in boards.cfg */
+#define CONFIG_SPL
+#endif
+
+#ifndef CONFIG_SYS_BOARD_NAME
+#define CONFIG_SYS_BOARD_NAME CONFIG_SYS_BOARD
+#endif
+
+#define CONFIG_SPL_FRAMEWORK
+#define CONFIG_SPL_BSS_START_ADDR	0x50000000
+#define CONFIG_SPL_BSS_MAX_SIZE		0x80000		/* 512 KB */
+
+#define CONFIG_SPL_TEXT_BASE		0x20		/* sram start+header */
+#define CONFIG_SPL_MAX_SIZE		0x8000		/* 32 KB */
+
+#define CONFIG_SPL_LIBCOMMON_SUPPORT
+#define CONFIG_SPL_LIBDISK_SUPPORT
+#define CONFIG_SPL_SERIAL_SUPPORT
+#define CONFIG_SPL_LIBGENERIC_SUPPORT
+#define CONFIG_SPL_MMC_SUPPORT
+
+/* end of 24KB in sram */
+#define LOW_LEVEL_SRAM_STACK		0x00006000
+#define CONFIG_SPL_STACK		LOW_LEVEL_SRAM_STACK
+#define CONFIG_SPL_LDSCRIPT "arch/arm/cpu/armv7/sunxi/u-boot-spl.lds"
+
+/* 32KB offset */
+#define CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR	64
+/* 200KB, enough for a full u-boot.bin */
+#define CONFIG_SYS_U_BOOT_MAX_SIZE_SECTORS	400
+
 #undef CONFIG_CMD_FPGA
 #undef CONFIG_CMD_NET
 #undef CONFIG_CMD_NFS
@@ -196,5 +228,9 @@
 #define CONFIG_SUNXI_I2C
 #define CONFIG_SYS_I2C_SLAVE		0x7f
 #define CONFIG_CMD_I2C
+
+/* PMU */
+#define CONFIG_SPL_POWER_SUPPORT
+#define CONFIG_AXP209_POWER
 
 #endif /* __CONFIG_H */

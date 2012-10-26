@@ -848,6 +848,7 @@ clobber:	tidy
 	@[ ! -d $(obj)nand_spl ] || find $(obj)nand_spl -name "*" -type l -print | xargs rm -f
 	@rm -f $(obj)dts/*.tmp
 	@rm -f $(obj)spl/u-boot-spl{,-pad}.ais
+	@rm -f $(obj)spl/sun?i-spl.bin
 
 mrproper \
 distclean:	clobber unconfig

@@ -1,9 +1,6 @@
 /*
- * (C) Copyright 2007-2011
- * Allwinner Technology Co., Ltd. <www.allwinnertech.com>
- * Tom Cubie <tangliang@allwinnertech.com>
- *
- * Some board init for the Allwinner A10-evb board.
+ * (C) Copyright 2012
+ * Texas Instruments, <www.ti.com>
  *
  * See file CREDITS for list of people who contributed to this
  * project.
@@ -15,7 +12,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,14 +20,15 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
  * MA 02111-1307 USA
  */
+#ifndef	_ASM_ARCH_SPL_H_
+#define	_ASM_SPL_H_
 
-#include <common.h>
-
-#ifdef CONFIG_DISPLAY_BOARDINFO
-int checkboard(void)
-{
-	puts("Board: A13-EVB\n");
-
-	return 0;
-}
+#define BOOT_DEVICE_NONE	0
+#define BOOT_DEVICE_XIP		1
+#define BOOT_DEVICE_NAND	2
+#define BOOT_DEVICE_ONE_NAND	3
+#define BOOT_DEVICE_MMC2	5 /*emmc*/
+#define BOOT_DEVICE_MMC1	6
+#define BOOT_DEVICE_XIPWAIT	7
+#define BOOT_DEVICE_MMC2_2      0xFF
 #endif
